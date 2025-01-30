@@ -10,6 +10,7 @@
         {% if user_info['images'] %}
         <img src="{{ user_info['images'][0]['url'] }}" width="200" alt="Immagine profilo">
         {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
         <h2>Le tue Playlist:</h2>
         {% if playlists %}
             <table>
@@ -32,6 +33,7 @@
                             Nessuna immagine
                         {% endif %}
                         </td>
+                        <td  href="{{ url_for('brani') }}" id >Logout</td>
                         </tr>
                     {% endfor %}
                 </tbody>

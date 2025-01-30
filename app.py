@@ -53,5 +53,11 @@ def logout():
     session.clear() #cancelliamo l'access token salvato in session
     return redirect(url_for('login'))
 
+@app.route('/brani')
+def brani():
+    print("ciao")
+    return render_template('brani.html', user_info=user_info, playlists=playlists_info) 
+
+
 if __name__ == '__main__':
     app.run(debug=True)

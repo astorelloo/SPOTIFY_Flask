@@ -33,7 +33,7 @@
                             Nessuna immagine
                         {% endif %}
                         </td>
-                        <td  href="{{ url_for('brani') }}" id >Logout</td>
+                        <td><a href="/playlist/{{ playlist['id'] }}">Vedi Brani</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

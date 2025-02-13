@@ -1,1 +1,49 @@
-ciao
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+</head>
+
+<body>
+    <div class="container">
+        <h1>Brani della Playlist </h1>
+
+        {% if brani %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Brano</th>
+                    <th>Album</th>
+                    <th>Artista</th>
+                    <th>Copertina</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for brano in brani %}
+                <tr>
+                    <td>{{ brano['track']['name'] }}</td>
+                    <td>{{ brano['track']['album']['name'] }}</td>
+                    <td>
+                        {% for artist in brano['track']['artists'] %}
+                        {{ artist['name'] }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if brano['track']['album']['images'] %}
+                        <img class="track-img" src="{{ brano['track']['album']['images'][0]['url'] }}" alt="Copertina album">
+                        {% else %}
+                        <span class="no-image">Nessuna immagine</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-tracks">Non ci sono brani in questa playlist.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
